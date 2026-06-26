@@ -1,6 +1,6 @@
-# Sales-Data-Warehouse-Analytics-Case-Study
-Designed a SQL-based Sales Data Warehouse from CRM and ERP datasets, using Medallion Architecture and performed advanced analytics including revenue trends, customer segmentation, product performance, and trend analysis to generate actionable business insights.
 # 📊 Sales Data Warehouse & Analytics Case Study
+
+Designed a SQL-based Sales Data Warehouse from CRM and ERP datasets and performed exploratory and advanced analytics including revenue trends, customer segmentation, product performance, and trend analysis to generate actionable business insights.
 
 ## Project Overview
 
@@ -57,33 +57,20 @@ This structure enabled fast aggregations and analytical reporting.
 
 ---
 
-## Tech Stack
+## **Data Flow(Lineage)**
 
-* Microsoft SQL Server
-* SQL (DDL, DML, ETL)
-* Data Warehousing
-* Star Schema Modeling
-* Stored Procedures
-* Analytical Reporting
-
----
-
-## SQL Concepts Used
-
-* CTEs
-* Views
-* Stored Procedures
-* Aggregate Functions
-* Window Functions
-* `ROW_NUMBER()`
-* `RANK()`
-* `LEAD()` / `LAG()`
-* Running Totals
-* Year-over-Year Analysis
+┌─────────┐   ┌──────────── BRONZE ────────────┐   ┌──────────── SILVER ────────────┐   ┌───────── GOLD ─────────┐
+│ Sources │   │ crm_sales                      │   │ crm_sales                      │   │ fact_sales             │
+│ CRM     │──>│ crm_cust                       │──>│ crm_cust                       │──┐│                        │
+│ ERP     │──>│ crm_prod                       │──>│ crm_prod                       │──┼│ dim_customers          │
+│         │──>│ erp_cust                       │──>│ erp_cust                       │──┤│                        │
+│         │──>│ erp_loc                        │──>│ erp_loc                        │──┼│ dim_products           │
+│         │──>│ erp_cat                        │──>│ erp_cat                        │──┘│                        │
+└─────────┘   └────────────────────────────────┘   └────────────────────────────────┘   └────────────────────────┘
 
 ---
 
-## Analytical Focus
+## Exploratory and Advanced Analysis
 
 ### Customer Analytics
 
@@ -180,3 +167,31 @@ This project demonstrates how modern data warehousing helps organizations:
 * Identify top-performing products and customers
 * Detect business risks
 * Support strategic growth through analytics
+
+---
+
+## Tech Stack
+
+* Microsoft SQL Server
+* SQL (DDL, DML, ETL)
+* Data Warehousing
+* Star Schema Modeling
+* Stored Procedures
+* Analytical Reporting
+
+---
+
+## SQL Concepts Used
+
+* CTEs
+* Views
+* Stored Procedures
+* Aggregate Functions
+* Window Functions
+* `ROW_NUMBER()`
+* `RANK()`
+* `LEAD()` / `LAG()`
+* Running Totals
+* Year-over-Year Analysis
+
+---
